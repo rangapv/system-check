@@ -57,6 +57,7 @@ then
 fi #end of fedora
 
 
+<<<<<<< HEAD
 
 if [ ! -z "$c1" ]
 then
@@ -69,6 +70,8 @@ then
         cm1="yum -y"
 fi #end of centos
 
+=======
+>>>>>>> c59661fd72b4344949fb67b5e52705f5463607c0
 sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo systemctl enable docker
