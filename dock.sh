@@ -29,20 +29,18 @@ then
 	if [ -f "/etc/apt/sources.list.d/docker.list" ]
 	then
         	echo "docker.list found\n"
+		sudo truncate -s 0 /etc/apt/sources.list.d/docker.list
 	else
         echo "Creating docker.list file in /etc/apt/sources.list.d"
         sudo touch /etc/apt/sources.list.d/docker.list
-	sudo chmod 777 /etc/apt/sources.list.d/docker.list
-        #sudo echo "deb https://apt.dockerproject.org/repo ubuntu-yakkety main" >> /etc/apt/sources.list.d/docker.list
-	sudo echo "deb https://download.docker.com/$li2/$ki $mi2 stable" >> /etc/apt/sources.list.d/docker.list
-	#sudo echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu/dists $(lsb_release -cs) stable" >> /etc/apt/sources.list.d/docker.list
 	fi
+	sudo chmod 777 /etc/apt/sources.list.d/docker.list
+	sudo echo "deb https://download.docker.com/$li2/$ki $mi2 stable" >> /etc/apt/sources.list.d/docker.list
 	sudo chmod 777 /etc/apt/sources.list.d/docker.list
 
 	sudo $cm1 update
 	sudo $cm1  install -yqq docker-ce --allow-unauthenticated
 
-#sudo apt-get upgrade -yqq docker-engine
 fi
 
 
