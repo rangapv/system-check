@@ -51,7 +51,7 @@ then
         sudo dnf -y install dnf-plugins-core
         sudo dnf config-manager --add-repo https://download.docker.com/$li2/$ki/docker-ce.repo
         sudo dnf -y install docker-ce --releasever=28
-
+	cm1="dnf -y"
 fi #end of fedora
 
 if [ ! -z "$c1" ]
