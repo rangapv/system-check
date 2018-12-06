@@ -50,7 +50,7 @@ then
         ki="${ji,,}"
         sudo dnf -y install dnf-plugins-core
         sudo dnf config-manager --add-repo https://download.docker.com/$li2/$ki/docker-ce.repo
-        sudo dnf -y install docker-ce
+        sudo dnf -y install docker-ce --releasever=28
 
 fi #end of fedora
 
@@ -61,7 +61,7 @@ then
         ki="${ji,,}"
 	sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 	sudo yum-config-manager --add-repo https://download.docker.com/$li2/$ki/docker-ce.repo
-        sudo yum -y install docker-ce
+        sudo yum -y install docker-ce 
         cm1="yum -y"
 fi #end of centos
 
