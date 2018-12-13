@@ -1,3 +1,3 @@
 # doker
-A universal docker install for debian/fedora/raspian
+A universal docker install for debian/fedora/centos
 
