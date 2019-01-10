@@ -41,7 +41,7 @@ then
 	sudo $cm1 update
 	sudo $cm1  install -yqq docker-ce --allow-unauthenticated
         sudo apt-get install -yqq python-pip
-        sudo pip install -y docker-compose
+        sudo pip install docker-compose
 fi
 
 
@@ -54,7 +54,7 @@ then
         sudo dnf -y install docker-ce --releasever=28
 	cm1="dnf -y"
         sudo dnf install -yqq python-pip
-        sudo pip install -y docker-compose
+        sudo pip install docker-compose
 fi #end of fedora
 
 if [ ! -z "$c1" ]
@@ -66,7 +66,7 @@ then
 	sudo yum-config-manager --add-repo https://download.docker.com/$li2/$ki/docker-ce.repo
         sudo yum -y install docker-ce 
         sudo yum install -yqq python-pip
-        sudo pip install -y docker-compose
+        sudo pip install docker-compose
         cm1="yum -y"
 fi #end of centos
 
@@ -75,4 +75,4 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker
 sudo $cm1 update
 docker version
-
+docker-compose version
