@@ -1,0 +1,72 @@
+#! /bin/bash
+li=$(uname -s)
+li2="${li,,}"
+
+u1=$(cat /etc/*-release | grep ubuntu)
+f1=$(cat /etc/*-release | grep fedora)
+c1=$(cat /etc/*-release | grep centos)
+s1=$(cat /etc/*-release | grep suse)
+
+
+py1="$(python --version 2>&1)"
+py2="$(which python 2>&1)"
+dk1="$(docker version 2>&1)"
+dk2="$(which docker 2>&1)"
+dc1="$(docker-compose version 2>&1)"
+dc2="$(which docker-compose 2>&1)"
+gc1="$(go version 2>&1)"
+gc2="$(which go 2>&1)"
+
+if [ ! -z "$u1" ]
+then 
+	mi=$(lsb_release -cs)
+	mi2="${mi,,}"
+	ji=$(cat /etc/*-release | grep DISTRIB_ID | awk '{split($0,a,"=");print a[2]}')
+	ki="${ji,,}"
+
+	if [ "$ki" == "ubuntu" ]
+	then
+   	echo "THIS BOX IS UBUNTU"
+   	cm1="apt-get"
+   	cm2="apt-key"
+	fi
+        py="The python version is:"
+        echo "$py $py1"
+        echo "The python is installed in  $py2"
+        if [  -z "$dk2" ]
+        then 
+          echo "Docker is NOT INSTALLED"
+        else
+          echo "Dokcer version is: $dk1"
+        fi
+	if [  -z "$dc2" ]
+        then
+          echo "Docker-compose is NOT INSTALLED"
+        else
+          echo "Docker-compose version is: $dc1"
+        fi
+	if [  -z "$gc2" ]
+        then
+          echo "go is NOT INSTALLED"
+        else
+          echo "go version is: $gc1"
+        fi
+
+
+fi
+
+
+if [ ! -z "$f1" ]
+then
+        ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"=");print a[2]}')
+        ki="${ji,,}"
+fi #end of fedora
+
+if [ ! -z "$c1" ]
+then
+	echo "it is a centos"
+        ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"\"");print a[2]}')
+        ki="${ji,,}"
+        cm1="yum -y"
+fi #end of centos
+
