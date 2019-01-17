@@ -68,7 +68,36 @@ if [ ! -z "$f1" ]
 then
         ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"=");print a[2]}')
         ki="${ji,,}"
-fi #end of fedora
+
+       if [[ "$py2" =~ "no python" ]]
+        then
+          echo "python is NOT INSTALLED"
+        else
+          echo "python version is: $py2"
+          echo "python is installed in: $py1"
+        fi
+        if [[ "$dk2" =~ "no docker" ]]
+        then
+          echo "Docker is NOT INSTALLED"
+        else
+          echo "Docker version is: $dk1"
+          echo "Docker is installed in: $dk2"
+        fi
+        if [[ "$dc2" =~ "no docker-compose" ]]
+        then
+          echo "Docker-compose is NOT INSTALLED"
+        else
+          echo "Docker-compose version is: $dc1"
+          echo "Docker-compose is installed in: $dc2"
+        fi
+        if [[ "$gc2" =~ "no go" ]]
+        then
+          echo "go is NOT INSTALLED"
+        else
+          echo "go version is: $gc1"
+          echo "go is installed in : $gc2"
+        fi
+fi
 
 if [ ! -z "$c1" ]
 then
