@@ -68,13 +68,13 @@ if [ ! -z "$f1" ]
 then
         ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"=");print a[2]}')
         ki="${ji,,}"
-
+       echo "The box is $ki"
        if [[ "$py2" =~ "no python" ]]
         then
           echo "python is NOT INSTALLED"
         else
-          echo "python version is: $py2"
-          echo "python is installed in: $py1"
+          echo "python version is: $py1"
+          echo "python is installed in: $py2"
         fi
         if [[ "$dk2" =~ "no docker" ]]
         then
