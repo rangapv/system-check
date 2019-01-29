@@ -59,8 +59,7 @@ fi #end of centos
           echo "python version is: $py1"
           echo "python is installed in: $py2"
         fi
-       
-	if [  -z "$pi2" ]
+	if [ -z "$pi2" ] || [[ $pi2 =~ ."no". ]]
         then
           echo "pip is NOT INSTALLED"
         else
@@ -90,7 +89,7 @@ fi #end of centos
           echo "go is installed in : $gc2"
         fi
        
-        if [[ ! -z "$py2" ]]
+        if [[ ! -z "$py2" ]] && [[ ! $pi2 =~ ."no". ]]
         then
           echo "DO you need pip/python/ML packages list[y/n] ?"
           read pl
