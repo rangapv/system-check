@@ -10,6 +10,8 @@ s1=$(cat /etc/*-release | grep suse)
 
 py1="$(python --version 2>&1)"
 py2="$(which python 2>&1)"
+pi1="$(pip -V 2>&1)"
+pi2="$(which pip 2>&1)"
 dk1="$(docker version 2>&1)"
 dk2="$(which docker 2>&1)"
 dc1="$(docker-compose version 2>&1)"
@@ -35,9 +37,18 @@ then
         then
           echo "python is NOT INSTALLED"
         else
-          echo "python version is: $py2"
-          echo "python is installed in: $py1"
+          echo "python version is: $py1"
+          echo "python is installed in: $py2"
         fi
+       
+	if [  -z "$pi2" ]
+        then
+          echo "pip is NOT INSTALLED"
+        else
+          echo "pip version is: $pi1"
+          echo "pip is installed in: $pi2"
+        fi
+
         if [  -z "$dk2" ]
         then 
           echo "Docker is NOT INSTALLED"
