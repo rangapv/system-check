@@ -32,6 +32,24 @@ then
    	cm1="apt-get"
    	cm2="apt-key"
 	fi
+fi
+
+if [ ! -z "$f1" ]
+then
+        ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"=");print a[2]}')
+        ki="${ji,,}"
+fi
+
+if [ ! -z "$c1" ]
+then
+	echo "it is a centos"
+        ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"\"");print a[2]}')
+        ki="${ji,,}"
+        cm1="yum -y"
+fi #end of centos
+
+
+# Package checks
 
 	if [  -z "$py2" ]
         then
@@ -72,49 +90,5 @@ then
         fi
 
 
-fi
 
-
-if [ ! -z "$f1" ]
-then
-        ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"=");print a[2]}')
-        ki="${ji,,}"
-       echo "The box is $ki"
-       if [[ "$py2" =~ "no python" ]]
-        then
-          echo "python is NOT INSTALLED"
-        else
-          echo "python version is: $py1"
-          echo "python is installed in: $py2"
-        fi
-        if [[ "$dk2" =~ "no docker" ]]
-        then
-          echo "Docker is NOT INSTALLED"
-        else
-          echo "Docker version is: $dk1"
-          echo "Docker is installed in: $dk2"
-        fi
-        if [[ "$dc2" =~ "no docker-compose" ]]
-        then
-          echo "Docker-compose is NOT INSTALLED"
-        else
-          echo "Docker-compose version is: $dc1"
-          echo "Docker-compose is installed in: $dc2"
-        fi
-        if [[ "$gc2" =~ "no go" ]]
-        then
-          echo "go is NOT INSTALLED"
-        else
-          echo "go version is: $gc1"
-          echo "go is installed in : $gc2"
-        fi
-fi
-
-if [ ! -z "$c1" ]
-then
-	echo "it is a centos"
-        ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"\"");print a[2]}')
-        ki="${ji,,}"
-        cm1="yum -y"
-fi #end of centos
 
