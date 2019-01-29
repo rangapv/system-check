@@ -18,6 +18,7 @@ dc1="$(docker-compose version 2>&1)"
 dc2="$(which docker-compose 2>&1)"
 gc1="$(go version 2>&1)"
 gc2="$(which go 2>&1)"
+pipl="$(pip list 2>&1)"
 
 if [ ! -z "$u1" ]
 then 
@@ -88,7 +89,14 @@ fi #end of centos
           echo "go version is: $gc1"
           echo "go is installed in : $gc2"
         fi
-
-
-
+       
+        if [[ ! -z "$py2" ]]
+        then
+          echo "DO you need pip/python/ML packages list[y/n] ?"
+          read pl
+          if [ "$pl" = "y" ]
+          then 
+           echo "$pipl"
+          fi
+        fi
 
