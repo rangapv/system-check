@@ -39,6 +39,7 @@ if [ ! -z "$f1" ]
 then
         ji=$(cat /etc/*-release | grep '^ID=' |awk '{split($0,a,"=");print a[2]}')
         ki="${ji,,}"
+        echo " it is fedora"
 fi
 
 if [ ! -z "$c1" ]
@@ -52,7 +53,7 @@ fi #end of centos
 
 # Package checks
 
-	if [  -z "$py2" ]
+	if [  -z "$py2" ] || [[ $py2 =~ ."no". ]]
         then
           echo "python is NOT INSTALLED"
         else
@@ -67,21 +68,21 @@ fi #end of centos
           echo "pip is installed in: $pi2"
         fi
 
-        if [  -z "$dk2" ]
+        if [  -z "$dk2" ] || [[ $dk2 =~ ."no". ]]
         then 
           echo "Docker is NOT INSTALLED"
         else
           echo "Docker version is: $dk1"
           echo "Docker is installed in: $dk2"
         fi
-	if [  -z "$dc2" ]
+	if [  -z "$dc2" ] || [[ $dc2 =~ ."no". ]]
         then
           echo "Docker-compose is NOT INSTALLED"
         else
           echo "Docker-compose version is: $dc1"
           echo "Docker-compose is installed in: $dc2"
         fi
-	if [  -z "$gc2" ]
+	if [  -z "$gc2" ] || [[ $gc2 =~ ."no". ]]
         then
           echo "go is NOT INSTALLED"
         else
