@@ -90,7 +90,7 @@ fi #end of centos
           echo "go is installed in : $gc2"
         fi
        
-        if [[ ! -z "$py2" ]] && [[ ! $pi2 =~ ."no". ]]
+        if [[ ! -z "$pi2" ]] && [[ ! $pi2 =~ ."no". ]]
         then
           echo "DO you need pip/python/ML packages list[y/n] ?"
           read pl
