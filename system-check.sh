@@ -19,6 +19,10 @@ dc2="$(which docker-compose 2>&1)"
 gc1="$(go version 2>&1)"
 gc2="$(which go 2>&1)"
 pipl="$(pip list 2>&1)"
+java1="$(java -version 2>&1)"
+java2="$(which java 2>&1)"
+javac1="$(javac -version 2>&1)"
+javac2="$(which javac 2>&1)"
 
 if [ ! -z "$u1" ]
 then 
@@ -90,6 +94,21 @@ fi #end of centos
           echo "go is installed in : $gc2"
         fi
        
+	if [[ -z "$java2" ]] || [[ $java2 =~ ."no". ]]
+        then
+          echo "Java is not installed"
+        else
+          echo "Java version is : $java1"
+          echo "Java is installed in : $java2"
+	fi
+	if [[ -z "$javac2" ]] || [[ $javac2 =~ ."no". ]]
+        then
+          echo "JavaCompiler is not installed"
+        else
+          echo "JavaCompiler version is : $javac1"
+          echo "JavaCompiler is installed in : $javac2"
+	fi
+
         if [[ ! -z "$pi2" ]] && [[ ! $pi2 =~ ."no". ]]
         then
           echo "DO you need pip/python/ML packages list[y/n] ?"
@@ -99,4 +118,3 @@ fi #end of centos
            echo "$pipl"
           fi
         fi
-
