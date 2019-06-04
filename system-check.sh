@@ -6,7 +6,8 @@ u1=$(cat /etc/*-release | grep ubuntu)
 f1=$(cat /etc/*-release | grep ID= | grep fedora)
 c1=$(cat /etc/*-release | grep ID= | grep centos)
 s1=$(cat /etc/*-release | grep suse)
-
+mac=$(sw_vers  | grep Mac)
+echo "$mac"
 
 py1="$(python --version 2>&1)"
 py2="$(which python 2>&1)"
@@ -54,6 +55,11 @@ then
         cm1="yum -y"
 fi #end of centos
 
+if [ ! -z "$mac" ]
+then
+	echo "It is a Mac"
+	cm1="brew"
+fi
 
 # Package checks
 
